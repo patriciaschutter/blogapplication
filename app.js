@@ -72,6 +72,6 @@ require("./routes/inputComment.js")(app, client)
 
 
 app.listen(process.env.webport, ()=>{
-	console.log('Running on', webport)
+	console.log('Running on', process.env.webport)
 })
 
