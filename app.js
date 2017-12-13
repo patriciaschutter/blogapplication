@@ -71,7 +71,7 @@ require("./routes/inputComment.js")(app, client)
 // }) 
 
 
-app.listen(3001, ()=>{
-	console.log('Running on 3001')
+app.listen(process.env.webport, ()=>{
+	console.log('Running on', webport)
 })
 
