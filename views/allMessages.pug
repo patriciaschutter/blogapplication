@@ -1,0 +1,149 @@
+html
+	head
+		title All blog posts
+	body
+		include nav.pug
+
+		h1 Blog posts
+		br
+		h2 #{text}
+
+		form(id="allForm" method="POST", action="/allPosts")
+			input(id='submitelement' type="submit" name="submit" value="All blog posts")
+
+		form(id="myForm" method="POST", action="/myPosts")
+			input(id='submitelement' type="submit" name="submit" value="My blog posts")
+
+
+		form(id="userForm" method="POST", action="/selectUser")
+			input(id='username' type="text" name='username' placeholder='username')
+			input(id='submitelement' type="submit" value="Search by user")
+
+		div
+			ul
+				each item in messagesArray 
+					
+					li(class="messageli") <br> <span id="itemTitle"> #{item.title} </span><hr> #{item.body} <br> <span id="posted">Posted by: #{item.username}</span> 
+						br
+						hr 
+						hr
+						form(id="commentForm" method="POST", action="/inputComment")
+							input(id='title' type="text" name='comment' placeholder='Leave a comment')
+							input(id='submitelement' type="submit" value="submit")
+							input(type="hidden" name="messageID" value=item.id)
+
+
+	script.
+		
+
+	style.
+			@import "http://fonts.googleapis.com/css?family=Ubuntu";
+			h1 {
+			font-family:'Ubuntu',sans-serif;
+			text-align:center;
+			font-size: 55px;
+			}
+
+			ul{
+			list-style-type: none;
+			margin-left: -35px;
+			}
+
+			
+			.messageli{
+			text-decoration:none;
+			box-sizing: border-box;
+			width: 800px;
+			height:auto;
+			margin:-30 auto;
+			font-family:'Ubuntu',sans-serif;
+			text-align:center;
+			border:1px solid #ccc;
+			padding:0 20px 15px;
+			box-shadow:0 0 15px;
+			border-radius:6px;
+			margin-top: 40px;
+			
+			}
+
+			#userLI{
+			padding-top: 10px;
+			}
+
+			#allForm, #myForm, #userForm, #submitelement{
+			box-sizing: border-box;
+			width: 800px;
+			height:auto;
+			margin:0 auto;
+			font-family:'Ubuntu',sans-serif;
+			text-align:center;
+			border:1px solid #ccc;
+			padding:0 50px 15px;
+			box-shadow:0 0 15px;
+			border-radius:6px;
+			margin-top: 10px;
+			margin-bottom: 0px;
+			}
+
+			#userForm h3{
+			margin-top:10px
+			}
+
+			
+			textarea{
+			width:100%;
+			border:3px solid #2BC1F2;
+			padding:10px;
+			margin-bottom:25px;
+			margin-top:10px;
+			height:100px;
+			resize:none
+			}
+
+			plabel{
+			float:left;
+			font-size:16px
+			}
+
+			p#setUser{
+			width:97%;
+			margin-top:10px;
+			height:auto;
+			margin-bottom:10px;
+			padding:10px;
+			border:3px solid #2BC1F2;
+			text-align: left;
+			font-size: 14px;
+			}
+
+			#posted{
+			font-size: 14px;
+			float: right;
+			font-style: italic;
+			}
+
+			#itemTitle{
+			font-size: 20px;
+			font-weight: bold;
+			}
+
+			input{
+			width:100%;
+			margin-top:10px;
+			height:35px;
+			margin-bottom:10px;
+			padding:10px;
+			border:3px solid #2BC1F2;
+			}
+
+			#submitelement{
+			width:100%;
+			padding:10px 35px;
+			background-color:#2BC1F2;
+			border:none;
+			color:#fff;
+			font-size:18px;
+			font-weight:700;
+			cursor:pointer;
+			font-family:'Ubuntu',sans-serif
+			}
