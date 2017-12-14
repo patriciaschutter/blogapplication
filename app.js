@@ -6,6 +6,7 @@ const session = require('express-session')
 const bodyParser = require("body-parser")
 const pg = require('pg')
 const Client = pg.Client
+const bcrypt = require("bcrypt")
 
 require ('dotenv').load();
 
@@ -35,10 +36,10 @@ client.connect((err) => {
 require("./routes/index.js")(app) 
 
 require("./routes/login.js")(app)
-require("./routes/loginroute.js")(app, client)
+require("./routes/loginroute.js")(app, client, bcrypt)
 
 require("./routes/signup.js")(app)
-require("./routes/signuproute.js")(app, client)
+require("./routes/signuproute.js")(app, client, bcrypt)
 
 require("./routes/logout.js")(app)
 
